@@ -1,4 +1,4 @@
-######### 1 . area of a circle############
+#########area of a circle############
 circle <- function(radius)
 {
   ar <- pi * radius ^ 2
@@ -7,7 +7,7 @@ circle <- function(radius)
 circle(1)
 
 
-########## 2 . larger of two inputs############
+##########larger of two inputs############
 fx <- function(x , y)
 {
   if(x > y)
@@ -90,19 +90,25 @@ avg
 
 ################## 6 . half tablet- full tablet ################
 arr <- c()
-i <- 1
+val <- numeric(length=1000)
 tab <- function(n){
+  i <- 1
   while( length(unique(arr)) < 2){
     arr <- c(arr , sample(c(1 , 0) , 1 , c(i , 1-i) , replace = T))
     i <- i - 1/n
   }
   return(length(arr))
 }
-tab(100) 
+for(i in 1:1000)
+{
+  val[i] <- tab(100)
+}
+mean(val)
+
 
 ################## 7 . MontyHall ###################################
 MontyHall <- function(x){
-  outcome <- sample(c(1 , 0) , 1)
+  outcome <- sample(c(1 , 0) , 1 , c(2/3 , 1/3) , replace = T)   #decided to switch the doors, so success probability = 2/3
   if(outcome == 1){
     print('win')
   }else{
