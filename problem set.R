@@ -1,4 +1,4 @@
-#########area of a circle############
+######### 1 . area of a circle############
 circle <- function(radius)
 {
   ar <- pi * radius ^ 2
@@ -7,7 +7,7 @@ circle <- function(radius)
 circle(1)
 
 
-##########larger of two inputs############
+########## 2 . larger of two inputs############
 fx <- function(x , y)
 {
   if(x > y)
@@ -26,7 +26,7 @@ fx <- function(x , y)
 }
 fx(3,3)
 
-########roll a die 1000 & output is an even number############
+############# 3. roll a die 1000 & output is an even number############
 arr <- numeric(length = 1000)
 roll <- function(n)
 {
@@ -53,7 +53,7 @@ for( k in 1:1000)
 }
 j
 
-############proprotion of numbers###########
+############ 4 . proprotion of numbers###########
 count <- 0
 fx <- function(n)
 {
@@ -70,18 +70,49 @@ fx <- function(n)
 }
 fx(1000)
 
-##################collection of toys#############
+################## 5 . collection of toys#############
 rm(list = ls())
-char <- c("Harry", " Dumbledore", "Hermione", "Ron", "Neville", "Mcgonagall", "Doby")
-prob <- c(0.25, 0.2, 0.2, 0.15, 0.1, .5, 0.5)
-
-Hogwarts <- c()
-
-while(length(unique(Hogwarts)) < 7){
-  Hogwarts <- c(Hogwarts, sample(char, 1, prob, replace = T))
+sum <- 0
+for(i in 1:1000){
+  char <- c("Harry", " Dumbledore", "Hermione", "Ron", "Neville", "Mcgonagall", "Doby")
+  prob <- c(0.25, 0.2, 0.2, 0.15, 0.1, .5, 0.5)
+  
+  Hogwarts <- c()
+  
+  while(length(unique(Hogwarts)) < 7){
+    Hogwarts <- c(Hogwarts, sample(char, 1, prob, replace = T))
+  }
+  
+  sum <- sum + length(Hogwarts)
 }
- 
-length(Hogwarts)
+avg <- sum / 1000
+avg
 
+################## 6 . half tablet- full tablet ################
+arr <- c()
+i <- 1
+tab <- function(n){
+  while( length(unique(arr)) < 2){
+    arr <- c(arr , sample(c(1 , 0) , 1 , c(i , 1-i) , replace = T))
+    i <- i - 1/n
+  }
+  return(length(arr))
+}
+tab(100) 
 
-#######
+################## 7 . MontyHall ###################################
+MontyHall <- function(x){
+  outcome <- sample(c(1 , 0) , 1)
+  if(outcome == 1){
+    print('win')
+  }else{
+      print('loose')
+  }
+  return(outcome)
+}
+output <- numeric(length = 1000)
+  for(i in 1:1000){
+    output[i] <- MontyHall(i)
+  }
+output
+est <- sum(output)/1000
